@@ -1,0 +1,18 @@
+[build-system]
+requires = ["uv_build >= 0.13, <0.14"]
+build-backend = "uv_build"
+
+[project]
+name = "automatic-cloudflare-ddns"
+version = "1.0.0"
+requires-python = ">= 3.8"
+description = "A simple single-purpose python script to automatically update an A record to the current external IPv4 Address."
+dependencies = [
+  "requests"
+]
+authors = [
+  {name = "Bala Chandran", email = "cfddns@bala.red"},
+]
+maintainers = [
+  {name = "Bala Chandran", email = "cfddns@bala.red"},
+]
