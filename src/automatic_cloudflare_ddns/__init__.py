@@ -31,22 +31,18 @@ try:
     logtofile = args.logtofile
     maxlogfiles = args.maxlogfiles-1
 
-    if verbose or logtofile:
-        def logger(message: str,place: str,name: str, colorid : int=39): #ignore
-            match colorid:
-                case 31: log_type = 'ERROR'
-                case 32: log_type = 'SUCCESS'
-                case 33: log_type = 'WARN'
-                case _: log_type = 'INFO'
-                
-            log = f'[{time.strftime('%H:%M:%S', time.localtime())}][{place}/{log_type}][{name}]: {message}'
-            if verbose:
-                print(f'\033[{colorid}m'+log+'\033[0m')
-            if logtofile:
-                logs.append(log+'\n')
-    else:
-        def logger(a=None,b=None,c=None,d=None):
-            pass
+    def logger(message: str,place: str,name: str, colorid : int=39): #ignore
+        match colorid:
+            case 31: log_type = 'ERROR'
+            case 32: log_type = 'SUCCESS'
+            case 33: log_type = 'WARN'
+            case _: log_type = 'INFO'
+            
+        log = f'[{time.strftime('%H:%M:%S', time.localtime())}][{place}/{log_type}][{name}]: {message}'
+        if verbose or colorid != 39:
+            print(f'\033[{colorid}m'+log+'\033[0m')
+        if logtofile:
+            logs.append(log+'\n')
 
     class main:
         def __init__(self, name : str, authorization : str):
