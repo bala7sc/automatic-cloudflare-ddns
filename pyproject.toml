@@ -7,6 +7,7 @@ name = "automatic-cloudflare-ddns"
 version = "1.0.1"
 requires-python = ">= 3.8"
 description = "A simple single-purpose python script to automatically update an A record to the current external IPv4 Address."
+readme = "README.md"
 dependencies = [
   "requests"
 ]
