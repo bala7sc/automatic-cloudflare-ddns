@@ -39,11 +39,12 @@ try:
             case _: log_type = 'INFO'
             
         log = f'[{time.strftime('%H:%M:%S', time.localtime())}][{place}/{log_type}][{name}]: {message}'
+        
+        logs.append(log+'\n')
+        
         if verbose or colorid != 39:
             print(f'\033[{colorid}m'+log+'\033[0m')
-        if logtofile:
-            logs.append(log+'\n')
-
+        
     class main:
         def __init__(self, name : str, authorization : str):
             self.authorization = authorization
@@ -196,6 +197,10 @@ try:
                         break
             logger(f'Attempt {attempt} Failed',place,name,31)
             time.sleep(5)
+except Exception as x:
+    logtofile = True
+    maxlogfiles = 5
+    logs.append(x)
 finally:
     if logtofile:
         log_files = []
